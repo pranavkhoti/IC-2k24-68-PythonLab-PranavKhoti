@@ -1,56 +1,37 @@
-# This program checks whether a number is an Armstrong number
-# and prints all Armstrong numbers within a given range.
+# This program checks Armstrong numbers and prints Armstrong numbers in a range.
 
-
-def is_armstrong(number):
-    """Return True if the number is an Armstrong number."""
-    digits = len(str(number))
-    temp = number
+def is_armstrong(n):
+    digits = len(str(n))
     total = 0
+    temp = n
 
     while temp > 0:
         digit = temp % 10
         total += digit ** digits
         temp //= 10
 
-    return total == number
+    return total == n
 
 
-# Check a single number
-while True:
-    try:
-        number = int(input("Enter a positive number: "))
+n = int(input("Enter a non-negative number: "))
 
-        if number < 0:
-            print("Please enter a non-negative number.")
-        else:
-            break
-    except ValueError:
-        print("Invalid input. Please enter an integer.")
-
-if is_armstrong(number):
-    print(number, "is an Armstrong number.")
+if n >= 0:
+    if is_armstrong(n):
+        print(n, "is an Armstrong number.")
+    else:
+        print(n, "is not an Armstrong number.")
 else:
-    print(number, "is not an Armstrong number.")
+    print("Please enter a non-negative number.")
 
 
-# Print Armstrong numbers in a range
-while True:
-    try:
-        start = int(input("\nEnter the starting value: "))
-        end = int(input("Enter the ending value: "))
+start = int(input("Enter starting value: "))
+end = int(input("Enter ending value: "))
 
-        if start < 0 or end < 0:
-            print("Please enter non-negative values.")
-        elif start > end:
-            print("Starting value cannot be greater than ending value.")
-        else:
-            break
-    except ValueError:
-        print("Invalid input. Please enter integers.")
+if start >= 0 and end >= start:
+    print("Armstrong numbers:", end=" ")
 
-print("Armstrong numbers in the range:")
-
-for number in range(start, end + 1):
-    if is_armstrong(number):
-        print(number, end=" ")
+    for i in range(start, end + 1):
+        if is_armstrong(i):
+            print(i, end=" ")
+else:
+    print("Invalid range.")
