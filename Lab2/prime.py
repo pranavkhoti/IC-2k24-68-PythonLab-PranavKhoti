@@ -1,55 +1,34 @@
-# This program checks whether a number is prime
-# and prints all prime numbers up to a given limit.
+# This program checks prime numbers and prints primes up to a limit.
 
-
-def is_prime(number):
-    """Return True if the number is prime."""
-    if number < 2:
+def is_prime(n):
+    if n < 2:
         return False
 
-    # Only test divisors up to the square root of the number.
-    divisor = 2
-
-    while divisor * divisor <= number:
-        if number % divisor == 0:
+    for i in range(2, n):
+        if n % i == 0:
             return False
-        divisor += 1
 
     return True
 
 
-# Check a single number
-while True:
-    try:
-        number = int(input("Enter a positive integer: "))
+n = int(input("Enter a non-negative number: "))
 
-        if number < 0:
-            print("Please enter a non-negative integer.")
-        else:
-            break
-    except ValueError:
-        print("Invalid input. Please enter an integer.")
-
-if is_prime(number):
-    print(number, "is a prime number.")
+if n >= 0:
+    if is_prime(n):
+        print(n, "is a prime number.")
+    else:
+        print(n, "is not a prime number.")
 else:
-    print(number, "is not a prime number.")
+    print("Please enter a non-negative number.")
 
 
-# Print all prime numbers up to a limit
-while True:
-    try:
-        limit = int(input("\nEnter the limit: "))
+limit = int(input("Enter the limit: "))
 
-        if limit < 0:
-            print("Please enter a non-negative integer.")
-        else:
-            break
-    except ValueError:
-        print("Invalid input. Please enter an integer.")
+if limit >= 0:
+    print("Prime numbers:", end=" ")
 
-print("Prime numbers up to", limit, ":")
-
-for number in range(2, limit + 1):
-    if is_prime(number):
-        print(number, end=" ")
+    for i in range(2, limit + 1):
+        if is_prime(i):
+            print(i, end=" ")
+else:
+    print("Please enter a non-negative number.")
