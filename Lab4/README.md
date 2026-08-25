@@ -1,4 +1,4 @@
-# Python Assignment
+# Python Assignment 
 
 ## Question 1 — Star Pattern
 
